@@ -6,7 +6,7 @@ addBtn.addEventListener("click", addTodo);
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") addTodo();
 });
-
+console.log("test code reviewer");
 function addTodo() {
   const value = input.value.trim();
   if (!value) return;
