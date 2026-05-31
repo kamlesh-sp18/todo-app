@@ -36,3 +36,17 @@ li button {
   border-radius: 4px;
   cursor: pointer;
 }
+.btn-group {
+  display: flex;
+  gap: 6px;
+}
+.edit-btn {
+  background: #4d94ff !important;
+}
+.edit-input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 14px;
+  border: 1px solid #4d94ff;
+  border-radius: 4px;
+}
