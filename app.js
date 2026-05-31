@@ -7,10 +7,18 @@ input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") addTodo();
 });
 
-function addTodo() {
-  const value = input.value.trim();
-  if (!value) return;
+function getTodos() {
+  return JSON.parse(localStorage.getItem("todos") || "[]");
+}
 
+function saveTodos() {
+  const items = Array.from(todoList.querySelectorAll("li span")).map(
+    (s) => s.textContent
+  );
+  localStorage.setItem("todos", JSON.stringify(items));
+}
+
+function createTodoItem(value) {
   const li = document.createElement("li");
 
   const span = document.createElement("span");
@@ -42,6 +50,7 @@ function addTodo() {
       span.textContent = newValue;
       li.replaceChild(span, editInput);
       editBtn.textContent = "Edit";
+      saveTodos();
     }
   };
 
@@ -49,11 +58,22 @@ function addTodo() {
   removeBtn.textContent = "Remove";
   removeBtn.onclick = function () {
     todoList.removeChild(li);
+    saveTodos();
   };
 
   btnGroup.appendChild(editBtn);
   btnGroup.appendChild(removeBtn);
   li.appendChild(btnGroup);
-  todoList.appendChild(li);
-  input.value = "";
+  return li;
 }
+
+function addTodo() {
+  const value = input.value.trim();
+  if (!value) return;
+  todoList.appendChild(createTodoItem(value));
+  input.value = "";
+  saveTodos();
+}
+
+// Load persisted todos on startup
+getTodos().forEach((value) => todoList.appendChild(createTodoItem(value)));
