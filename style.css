@@ -1,52 +1,128 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-}
-.container {
-  width: 300px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-input[type="text"] {
-  width: 70%;
-  padding: 8px;
-  margin-right: 5px;
-}
-button {
-  padding: 8px 12px;
-}
-ul {
-  list-style: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
 }
-li {
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  margin: 8px 0;
-  padding: 6px 0;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  justify-content: center;
 }
-li button {
-  background: #ff4d4d;
+
+.container {
+  width: 380px;
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  color: #4a3f8f;
+  letter-spacing: 0.5px;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+  border-color: #667eea;
+}
+
+#add-btn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: opacity 0.2s;
 }
+
+#add-btn:hover {
+  opacity: 0.88;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #f7f7fb;
+  border-radius: 10px;
+  border: 1px solid #ececf4;
+}
+
+li span {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+
 .btn-group {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
+
+.btn-group button {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-group button:hover {
+  opacity: 0.8;
+}
+
 .edit-btn {
-  background: #4d94ff !important;
+  background: #667eea;
+  color: #fff;
 }
+
+.btn-group button:last-child {
+  background: #ff4d4d;
+  color: #fff;
+}
+
 .edit-input {
   flex: 1;
-  padding: 4px 6px;
+  padding: 6px 10px;
   font-size: 14px;
-  border: 1px solid #4d94ff;
-  border-radius: 4px;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  outline: none;
 }
