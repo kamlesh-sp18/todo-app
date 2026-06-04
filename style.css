@@ -111,6 +111,7 @@ li span {
 .edit-btn {
   background: #667eea;
   color: #fff;
+  font-weight: normal;
 }
 
 .btn-group button:last-child {
