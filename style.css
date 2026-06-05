@@ -108,6 +108,13 @@ li span {
   opacity: 0.8;
 }
 
+.done-btn {
+  background: #28a745;
+  color: #fff;
+}
+li.done {
+  opacity: 0.6;
+}
 .edit-btn {
   background: #667eea;
   color: #fff;
