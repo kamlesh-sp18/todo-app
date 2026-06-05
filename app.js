@@ -29,7 +29,7 @@ function createTodoItem(value) {
   btnGroup.className = "btn-group";
 
   // issue: var instead of const
-  var doneBtn = document.createElement("button");
+  const doneBtn = document.createElement("button");
   doneBtn.textContent = "Done";
   doneBtn.className = "done-btn";
   doneBtn.onclick = function () {
