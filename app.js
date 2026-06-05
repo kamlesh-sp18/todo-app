@@ -28,6 +28,24 @@ function createTodoItem(value) {
   const btnGroup = document.createElement("div");
   btnGroup.className = "btn-group";
 
+  // issue: var instead of const
+  var doneBtn = document.createElement("button");
+  doneBtn.textContent = "Done";
+  doneBtn.className = "done-btn";
+  doneBtn.onclick = function () {
+    // bug: checks span.classList but the "done" class is added to li, so undo never triggers
+    if (span.classList.contains("done")) {
+      li.classList.remove("done");
+      span.style.textDecoration = "";       // style issue: should use a CSS class
+      doneBtn.textContent = "Done";
+    } else {
+      li.classList.add("done");
+      span.style.textDecoration = "line-through";  // style issue: should use a CSS class
+      doneBtn.textContent = "Undo";
+    }
+    saveTodos();
+  };
+
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
   editBtn.className = "edit-btn";
@@ -43,6 +61,8 @@ function createTodoItem(value) {
       editInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") editBtn.click();
       });
+      // performance issue: saves to localStorage on every keystroke
+      editInput.addEventListener("input", saveTodos);
     } else {
       const editInput = li.querySelector(".edit-input");
       const newValue = editInput.value.trim();
@@ -61,6 +81,7 @@ function createTodoItem(value) {
     saveTodos();
   };
 
+  btnGroup.appendChild(doneBtn);
   btnGroup.appendChild(editBtn);
   btnGroup.appendChild(removeBtn);
   li.appendChild(btnGroup);
@@ -75,5 +96,4 @@ function addTodo() {
   saveTodos();
 }
 
-// Load persisted todos on startup
 getTodos().forEach((value) => todoList.appendChild(createTodoItem(value)));
