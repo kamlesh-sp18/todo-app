@@ -34,7 +34,7 @@ function createTodoItem(value) {
   doneBtn.className = "done-btn";
   doneBtn.onclick = function () {
     // bug: checks span.classList but the "done" class is added to li, so undo never triggers
-    if (span.classList.contains("done")) {
+    if (li.classList.contains("done")) {
       li.classList.remove("done");
       span.style.textDecoration = "";       // style issue: should use a CSS class
       doneBtn.textContent = "Done";
